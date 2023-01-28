@@ -27,6 +27,7 @@ for (const fn of list) {
   const c = (name) => pos[name]["#text"];
   const lat = dms2d(c("緯度_度"), c("緯度_分"), c("緯度_秒"));
   const lng = dms2d(c("経度_度"), c("経度_分"), c("経度_秒"));
+  const address = xml.ボーリング情報.標題情報.調査位置.調査位置住所["#text"];
   const name = xml.ボーリング情報.標題情報.調査基本情報.調査名["#text"];
   const bname = xml.ボーリング情報.標題情報.調査基本情報.ボーリング名["#text"];
   const startday = xml.ボーリング情報.標題情報.調査期間.調査期間_開始年月日["#text"];
@@ -40,6 +41,7 @@ for (const fn of list) {
     bname,
     lat,
     lng,
+    address,
     name,
   });
 }
