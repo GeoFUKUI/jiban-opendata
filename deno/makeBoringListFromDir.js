@@ -32,7 +32,11 @@ for (const fn of list) {
   const bname = xml.ボーリング情報.標題情報.調査基本情報.ボーリング名["#text"];
   const startday = xml.ボーリング情報.標題情報.調査期間.調査期間_開始年月日["#text"];
   const endday = xml.ボーリング情報.標題情報.調査期間.調査期間_終了年月日["#text"];
-
+  const nval = xml.ボーリング情報.コア情報.標準貫入試験 ? xml.ボーリング情報.コア情報.標準貫入試験[0]?.標準貫入試験_合計打撃回数["#text"] : "";
+if (nval === undefined) {
+  console.log(xml.ボーリング情報.コア情報.標準貫入試験)
+  //Deno.exit();
+}
   data.push({
     url: "https://geofukui.github.io/jiban-opendata/data/" + fn,
     size: file.size,
@@ -43,6 +47,7 @@ for (const fn of list) {
     lng,
     address,
     name,
+    nval,
   });
 }
 
